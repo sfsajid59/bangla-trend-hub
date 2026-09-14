@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Login</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body class="auth-body"><div class="auth-card"><a class="logo" href="../index.html">Bangla <span>Trend Hub</span></a><h1>Admin Login</h1><p class="muted">Demo login — production site-এ server-side authentication ব্যবহার করুন।</p>
+<form id="loginForm"><label>Username<input id="username" required autocomplete="username"></label><label>Password<input id="password" type="password" required autocomplete="current-password"></label><button class="btn btn-primary full">Login</button></form><p id="loginMsg" class="error"></p><a href="../index.html">← সাইটে ফিরে যান</a></div>
+<script>
+document.getElementById("loginForm").addEventListener("submit",e=>{
+e.preventDefault();
+const u=document.getElementById("username").value.trim(),p=document.getElementById("password").value;
+if(u==="admin"&&p==="admin123"){localStorage.setItem("bth_admin","1");location.href="dashboard.html";}
+else document.getElementById("loginMsg").textContent="ভুল username বা password। Demo: admin / admin123";
+});
+</script></body></html>

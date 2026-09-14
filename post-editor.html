@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Post Editor</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body>
+<header class="admin-header"><div class="container admin-bar"><strong>✍️ Post Editor</strong><a href="dashboard.html">← Dashboard</a></div></header>
+<main class="section"><div class="container"><div class="form-card">
+<h1 id="editorTitle">নতুন পোস্ট</h1>
+<form id="postForm">
+<label>শিরোনাম<input id="postTitle" required></label>
+<label>Slug<input id="postSlug" placeholder="যেমন: chatgpt-7-tips"></label>
+<label>Category<select id="postCategory"><option>AI & Technology</option><option>Mobile Tips</option><option>Online Tools</option><option>Trending</option><option>Security</option></select></label>
+<label>Featured Emoji / Image<input id="postImage" placeholder="🤖 অথবা image URL"></label>
+<label>সংক্ষিপ্ত বিবরণ<textarea id="postExcerpt" required></textarea></label>
+<label>Article Content<textarea id="postContent" required placeholder="প্রতি লাইনে আলাদা paragraph লিখতে পারেন।"></textarea></label>
+<label>Status<select id="postStatus"><option value="published">Published</option><option value="draft">Draft</option></select></label>
+<div class="button-row"><button class="btn btn-primary">Save Post</button><a class="btn btn-secondary" href="dashboard.html">Cancel</a></div>
+</form><p id="saveMsg" class="success"></p>
+</div></div></main>
+<script src="../assets/script.js"></script><script>requireAdmin(); initEditor();</script>
+</body></html>

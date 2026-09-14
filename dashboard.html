@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Dashboard</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body>
+<header class="admin-header"><div class="container admin-bar"><strong>⚙️ Bangla Trend Hub Admin</strong><div><a href="../index.html">সাইট দেখুন</a> <button onclick="logout()" class="small-btn">Logout</button></div></div></header>
+<main class="section"><div class="container">
+<div class="dashboard-top"><div><h1>Dashboard</h1><p class="muted">Demo CMS — localStorage ভিত্তিক</p></div><a class="btn btn-primary" href="post-editor.html">+ নতুন পোস্ট</a></div>
+<div class="stats"><div><strong id="postCount">0</strong><span>মোট পোস্ট</span></div><div><strong id="publishedCount">0</strong><span>Published</span></div><div><strong id="draftCount">0</strong><span>Draft</span></div></div>
+<div class="table-card"><div class="table-head"><h2>Posts</h2><input id="adminSearch" placeholder="পোস্ট খুঁজুন..." oninput="renderAdminPosts()"></div><div id="adminPosts"></div></div>
+</div></main>
+<script src="../assets/script.js"></script><script>
+requireAdmin(); renderAdminPosts(); updateStats();
+</script></body></html>
