@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bangla Trend Hub — AI, Tech ও Mobile Tips</title>
+<meta name="description" content="AI, প্রযুক্তি, মোবাইল টিপস ও অনলাইন টুল সম্পর্কে বাংলায় সহজ তথ্য।">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container navbar">
+    <a class="logo" href="index.html">Bangla <span>Trend Hub</span></a>
+    <button class="menu-btn" aria-label="মেনু">☰</button>
+    <nav class="nav">
+      <a class="active" href="index.html">হোম</a>
+      <a href="category.html?cat=AI%20%26%20Technology">AI & Tech</a>
+      <a href="category.html?cat=Mobile%20Tips">Mobile</a>
+      <a href="category.html?cat=Online%20Tools">Tools</a>
+      <a href="contact.html">যোগাযোগ</a>
+      <a class="admin-link" href="admin/login.html">Admin</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container">
+    <div class="hero-box">
+      <div>
+        <span class="eyebrow">বাংলায় সহজ প্রযুক্তি</span>
+        <h1>প্রযুক্তির দুনিয়ার নতুন সব তথ্য এক জায়গায়</h1>
+        <p>AI, মোবাইল, অনলাইন টুল এবং ডিজিটাল বিশ্বের দরকারি তথ্য সহজ বাংলায় পড়ুন।</p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="#latest">সর্বশেষ পোস্ট</a>
+          <a class="btn btn-ghost" href="category.html?cat=AI%20%26%20Technology">AI & Tech</a>
+        </div>
+      </div>
+      <div class="hero-art">🤖</div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="ad-box">বিজ্ঞাপনের জায়গা — Adsterra Code এখানে বসান</div></div>
+
+<section class="section">
+<div class="container">
+  <div class="section-head"><h2>জনপ্রিয় ক্যাটাগরি</h2><a href="categories.html">সব দেখুন →</a></div>
+  <div class="category-grid">
+    <a class="category-card" href="category.html?cat=AI%20%26%20Technology"><span>🤖</span><h3>AI & Technology</h3><p>AI ও নতুন প্রযুক্তি</p></a>
+    <a class="category-card" href="category.html?cat=Mobile%20Tips"><span>📱</span><h3>Mobile Tips</h3><p>স্মার্টফোনের টিপস</p></a>
+    <a class="category-card" href="category.html?cat=Online%20Tools"><span>💻</span><h3>Online Tools</h3><p>দরকারি অনলাইন টুল</p></a>
+    <a class="category-card" href="category.html?cat=Trending"><span>🔥</span><h3>Trending</h3><p>আলোচিত বিষয়</p></a>
+  </div>
+</div>
+</section>
+
+<section class="section" id="latest">
+<div class="container">
+  <div class="section-head"><h2>সর্বশেষ পোস্ট</h2><a href="search.html">সব পোস্ট →</a></div>
+  <div id="latestPosts" class="post-grid"></div>
+</div>
+</section>
+
+<div class="container"><div class="ad-box">বিজ্ঞাপনের জায়গা — Adsterra Code এখানে বসান</div></div>
+
+<section class="section">
+<div class="container newsletter">
+  <div><span class="eyebrow">আপডেট পেতে</span><h2>নতুন পোস্ট মিস করবেন না</h2><p>ইমেইল দিলে নতুন কনটেন্ট প্রকাশের খবর পেতে পারবেন।</p></div>
+  <form id="subscribeForm"><input id="subscribeEmail" type="email" placeholder="আপনার ইমেইল" required><button class="btn btn-primary">Subscribe</button></form>
+</div>
+</section>
+</main>
+
+<footer class="footer">
+<div class="container footer-grid">
+  <div><h3>Bangla Trend Hub</h3><p>প্রযুক্তি, AI, মোবাইল এবং অনলাইন দুনিয়ার দরকারি তথ্য সহজ বাংলায়।</p></div>
+  <div><h4>দরকারি</h4><a href="privacy.html">Privacy Policy</a><a href="disclaimer.html">Disclaimer</a><a href="contact.html">Contact</a></div>
+  <div><h4>ক্যাটাগরি</h4><a href="category.html?cat=AI%20%26%20Technology">AI & Tech</a><a href="category.html?cat=Mobile%20Tips">Mobile</a><a href="category.html?cat=Online%20Tools">Online Tools</a></div>
+</div>
+<div class="copyright">© <span id="year"></span> Bangla Trend Hub. All Rights Reserved.</div>
+</footer>
+<script src="assets/script.js"></script>
+<script>loadLatestPosts("latestPosts", 6);</script>
+</body>
+</html>
