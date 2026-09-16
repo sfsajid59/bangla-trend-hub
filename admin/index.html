@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard - Bangla Trend Hub</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="../assets/js/supabase.js"></script>
+
+    <script src="../assets/js/auth.js"></script>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f3f4f6;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .logout {
+            background: #dc2626;
+            color: white;
+            border: 0;
+            padding: 10px 15px;
+            border-radius: 7px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<header>
+
+    <h1>Bangla Trend Hub — Admin</h1>
+
+    <button
+        class="logout"
+        onclick="logout()"
+    >
+        Logout
+    </button>
+
+</header>
+
+
+<main>
+
+    <div class="card">
+
+        <h2>Admin Dashboard</h2>
+
+        <p id="adminEmail">
+            Loading...
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Posts</h2>
+
+        <p>
+            এখান থেকে আপনি পরবর্তীতে পোস্ট
+            Add / Edit / Delete করতে পারবেন।
+        </p>
+
+    </div>
+
+</main>
+
+
+<script>
+
+async function startAdmin() {
+
+    const allowed = await requireAdmin();
+
+    if (!allowed) {
+        return;
+    }
+
+    const user = await getCurrentUser();
+
+    document.getElementById("adminEmail").textContent =
+        "Logged in as: " + user.email;
+}
+
+startAdmin();
+
+</script>
+
+
+</body>
+
+</html>
