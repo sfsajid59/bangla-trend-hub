@@ -96,22 +96,76 @@
 
     </div>
 
-
     <div class="card">
 
-        <h2>Posts</h2>
+    <h2>নতুন Article Publish করুন</h2>
 
-        <p>
-            এখান থেকে আপনি পরবর্তীতে পোস্ট
-            Add / Edit / Delete করতে পারবেন।
-        </p>
+    <input id="postTitle" type="text" placeholder="Article Title">
 
-    </div>
+    <input id="postSlug" type="text" placeholder="Slug">
+
+    <textarea id="postExcerpt" placeholder="সংক্ষিপ্ত বিবরণ"></textarea>
+
+    <input id="postCategory" type="text" placeholder="Category">
+
+    <textarea id="postContent" placeholder="Article Content"></textarea>
+
+    <button onclick="publishPost()">
+        Publish Article
+    </button>
+
+    <p id="publishMessage"></p>
+
+</div>
+
 
 </main>
 
 
 <script>
+    async function publishPost() {
+
+    const title = document.getElementById("postTitle").value.trim();
+    const slug = document.getElementById("postSlug").value.trim();
+    const excerpt = document.getElementById("postExcerpt").value.trim();
+    const category = document.getElementById("postCategory").value.trim();
+    const content = document.getElementById("postContent").value.trim();
+
+    const message = document.getElementById("publishMessage");
+
+    if (!title || !slug || !excerpt || !category || !content) {
+        message.textContent = "সব ঘর পূরণ করুন।";
+        return;
+    }
+
+    const { data, error } = await supabase
+        .from("posts")
+        .insert([
+            {
+                title: title,
+                slug: slug,
+                excerpt: excerpt,
+                category: category,
+                content: content,
+                status: "published"
+            }
+        ])
+        .select();
+
+    if (error) {
+        console.error(error);
+        message.textContent = "Publish হয়নি: " + error.message;
+        return;
+    }
+
+    message.textContent = "✅ Article সফলভাবে Publish হয়েছে!";
+
+    document.getElementById("postTitle").value = "";
+    document.getElementById("postSlug").value = "";
+    document.getElementById("postExcerpt").value = "";
+    document.getElementById("postCategory").value = "";
+    document.getElementById("postContent").value = "";
+}
 
 async function startAdmin() {
 
