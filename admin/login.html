@@ -103,43 +103,84 @@
 const loginForm = document.getElementById("loginForm");
 const message = document.getElementById("message");
 
-loginForm.addEventListener("submit", async (e) => {
+loginForm.addEventListener("submit", async (e.preventDefault();
 
-    e.preventDefault();
+const email =
+  document.getElementById("email").value.trim();
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+const password =
+  document.getElementById("password").value;
 
-    message.textContent = "Login হচ্ছে...";
+message.textContent = "Login হচ্ছে...";
 
-    const { data, error } = await supabaseClient.auth.signInWithPassword({
-        email: email,
-        password: password
+try {
+
+  // 1. Supabase Authentication
+  const { data, error } =
+    await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password
     });
 
-    if (error) {
+  if (error) {
+    message.textContent = error.message;
+    return;
+  }
 
-        message.textContent = error.message;
+  if (!data || !data.user) {
+    message.textContent = "Login সফল হয়নি।";
+    return;
+  }
 
-        return;
-    }
+  message.textContent =
+    "Login সফল হয়েছে। Admin যাচাই হচ্ছে...";
 
-    const { data: adminResult, error: adminError } =
-        await supabaseClient.rpc("is_admin");
+  // 2. Admin permission check
+  const {
+    data: adminResult,
+    error: adminError
+  } = await supabaseClient.rpc("is_admin");
 
-    if (adminError || adminResult !== true) {
+  if (adminError) {
 
-        await supabaseClient.auth.signOut();
+    console.error(
+      "is_admin RPC error:",
+      adminError
+    );
 
-        message.textContent =
-            "এই account-এর Admin permission নেই।";
+    message.textContent =
+      "Admin যাচাই করতে সমস্যা হয়েছে: " +
+      adminError.message;
 
-        return;
-    }
+    await supabaseClient.auth.signOut();
 
-    window.location.href = "./index.html";
+    return;
+  }
 
-});
+  if (adminResult !== true) {
+
+    message.textContent =
+      "এই account-এ Admin permission নেই।";
+
+    await supabaseClient.auth.signOut();
+
+    return;
+  }
+
+  // 3. Everything OK
+  message.textContent =
+    "Login সফল! Dashboard-এ নেওয়া হচ্ছে...";
+
+  window.location.href = "./dashboard.html";
+
+} catch (err) {
+
+  console.error("Login error:", err);
+
+  message.textContent =
+    "Login করতে সমস্যা হয়েছে: " +
+    (err.message || "Unknown error");
+}
 
 </script>
 
