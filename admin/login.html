@@ -103,9 +103,9 @@
 const loginForm = document.getElementById("loginForm");
 const message = document.getElementById("message");
 
-loginForm.addEventListener("submit", async
+loginForm.addEventListener("submit", async (e)=> {
                            
-(e.preventDefault();
+e.preventDefault();
 
 const email =
   document.getElementById("email").value.trim();
